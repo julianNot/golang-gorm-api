@@ -1,16 +1,18 @@
 package db
 
 import (
+	"fmt"
 	"log"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-var DSN = "host=localhost user=fazt password=mysecretpassword dbname=gorm port=5432"
+var DSN = ""
 var DB *gorm.DB
 
-func DBConnection() {
+func DBConnection(host, user, password, nameDb, port string) {
+	DSN = fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s", host, user, password, nameDb, port)
 	var err error
 	DB, err = gorm.Open(postgres.Open(DSN), &gorm.Config{})
 	if err != nil {
