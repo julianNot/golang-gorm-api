@@ -1,6 +1,5 @@
 vendor/
 tmp/
-postgres_data/
 .env
 
 air
